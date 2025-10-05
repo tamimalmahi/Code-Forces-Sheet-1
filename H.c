@@ -1,23 +1,30 @@
 #include <stdio.h>
-
-int main(){
-    float a, b; 
-    int closest;
-    scanf("%f %f", &a, &b);
-    float sum = a / b;
-    float dx = sum - (int)sum, dy = ((int)sum + 1) - sum;
  
-    if (dx > dy)
+int main(){
+     
+    int closest, a, b;
+    scanf("%d %d", &a, &b);
+    float sum = (float)a / b;
+    float dx = sum - (int)sum, dy = ((int)sum + 1) - sum;
+    printf("floor %d / %d = %d\n", a, b, (int)sum);
+ 
+    if (sum != 1)
     {
-        closest = (int)sum + 1;
-    } else if (dx == 0.5 || dx < dy)
+        if (dx == 0.5 || dx > dy)
+        {
+            closest = (int)sum + 1;
+        } else if (dx < dy)
+        {
+            closest = (int)sum;
+        }
+ 
+        printf("ceil %d / %d = %d\n", a, b, (int)sum + 1);
+    } else 
     {
-        closest = (int)sum + 1;
+        printf("ceil %d / %d = %d\n", a, b, (int)sum);
     }
     
-    printf("floor %d / %d = %d\n", (int)a, (int)b, (int)sum);
-    printf("ceil %d / %d = %d\n", (int)a, (int)b, (int)sum + 1);
-    printf("round %d / %d = %d\n", (int)a, (int)b, closest);
+    printf("round %d / %d = %d\n", a, b, closest);
     
 return 0;
 }
